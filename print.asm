@@ -9,24 +9,24 @@ start:
 		int 10h
 
 		mov si, string
-		mov al, [si] ; al = first char of string
+		mov al, [si] ; al = first string char
 		
-		mov ah, 0x0E ; print char
+		mov ah, 0x0E ; teletype output
 		mov bh, 0x00
 		
 		returnFirstColor:
-				mov bl, 08h
+				mov bl, 08h ; min color
 				printLoop:
-						add bl, 01h
+						add bl, 01h ; go to the next color
 						
-						cmp bl, 10h
+						cmp bl, 10h ; max color
 						je returnFirstColor
 				
 						int 10h
-						inc si
+						inc si ; next string char
 						mov al, [si]
 						
-						cmp al, 0
+						cmp al, 0 ; string end
 						jnz printLoop	
 						ret
 
