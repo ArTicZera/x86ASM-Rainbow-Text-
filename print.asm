@@ -5,7 +5,7 @@ call start
 
 start:
 
-		mov ax, 13h ; mode 13h
+		mov ax, 0x13 ; mode 13h
 		int 10h
 
 		mov si, string
@@ -15,18 +15,18 @@ start:
 		mov bh, 0x00
 		
 		returnFirstColor:
-				mov bl, 08h ; min color
+				mov bl, 0x08 ; min color
 				printLoop:
-						add bl, 01h ; go to the next color
+						add bl, 0x01 ; go to the next color
 						
-						cmp bl, 10h ; max color
+						cmp bl, 0x10 ; max color
 						je returnFirstColor
 				
 						int 10h
 						inc si ; next string char
 						mov al, [si]
 						
-						cmp al, 0 ; string end
+						cmp al, 0x00 ; string end
 						jnz printLoop	
 						ret
 
