@@ -1,0 +1,3 @@
+INT 10h Functions: https://drive.google.com/file/d/1J5M5CIix2kYfdZU2MPDh8jEV4sU3eIUa/view
+BIOS Color Attributes: https://en.wikipedia.org/wiki/BIOS_color_attributes
+Mode 13h: https://en.wikipedia.org/wiki/Mode_13h
