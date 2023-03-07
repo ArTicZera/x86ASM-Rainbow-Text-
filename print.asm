@@ -1,12 +1,21 @@
+;UPDATE 1
+;
+; * NOW THIS BOOTSECTOR PROGRAM WORKS FOR VMWARE THANKS TO DS:AX 
+;
+; * I'VE SELECTED THE MOST VIVID FADING COLORS FROM THE VGA PALETTE 
+
 [BITS    16]
 [ORG 0x7c00]
 
 call start
 
 start:
-
-		mov ax, 0x13 ; mode 13h
+		;Mode 13h
+		mov ax, 0x13
 		int 10h
+		
+		mov ax, cx
+		mov ds, ax
 
 		mov si, string
 		mov al, [si] ; al = first string char
@@ -15,18 +24,22 @@ start:
 		mov bh, 0x00
 		
 		returnFirstColor:
-				mov bl, 0x08 ; min color
+				;Min color
+				mov bl, 0x08
+
 				printLoop:
-						add bl, 0x01 ; go to the next color
+						;Go to the next color
+						inc bl
 						
-						cmp bl, 0x10 ; max color
+						;Maxcolor
+						cmp bl, 0x10
 						je returnFirstColor
 				
 						int 10h
-						inc si ; next string char
+						inc si ;Next string char
 						mov al, [si]
 						
-						cmp al, 0x00 ; string end
+						cmp al, 0x00 ;String's end
 						jnz printLoop	
 						ret
 
