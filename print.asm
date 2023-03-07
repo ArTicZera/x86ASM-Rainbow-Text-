@@ -14,25 +14,27 @@ start:
 		mov ax, 0x13
 		int 10h
 		
+		;Data segment
 		mov ax, cx
 		mov ds, ax
 
 		mov si, string
-		mov al, [si] ; al = first string char
+		mov al, [si] ;AL = First string's char
 		
-		mov ah, 0x0E ; teletype output
+		;Teletype output
+		mov ah, 0x0E
 		mov bh, 0x00
 		
 		returnFirstColor:
 				;Min color
-				mov bl, 0x08
+				mov bl, 32
 
 				printLoop:
 						;Go to the next color
 						inc bl
 						
 						;Maxcolor
-						cmp bl, 0x10
+						cmp bl, 55
 						je returnFirstColor
 				
 						int 10h
