@@ -45,7 +45,7 @@ start:
 						jnz printLoop	
 						ret
 
-string: db "The quick brown fox jumps over the lazy dog!!!",0
+string: db "The quick brown fox jumps over the lazy dog!!! AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",0
 
 times 510 - ($ - $$) db 0
 dw 0xAA55
